@@ -2,6 +2,8 @@ package com.github.youssfbr.hero.application;
 
 import com.github.youssfbr.hero.entities.Hero;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -27,6 +29,8 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+        List<Hero> heroes = new ArrayList<>();
+
         char verify = 'y';
 
         while ( verify == 'y' ||
@@ -36,16 +40,22 @@ public class Main {
         {
             System.out.print("\nNome do Herói: ");
             String name = sc.nextLine();
+
             System.out.print("Nível do Herói: ");
             int level = sc.nextInt();
             sc.nextLine();
 
-            Hero hero = new Hero(name, level);
-            System.out.println("\n" + hero);
+            heroes.add(new Hero(name, level));
 
             System.out.print("\nDeseja continuar? (y/n) ");
             verify = sc.next().charAt(0);
             sc.nextLine();
+        }
+
+        System.out.println();
+
+        for (Hero hero : heroes) {
+            System.out.println(hero);
         }
 
         sc.close();
